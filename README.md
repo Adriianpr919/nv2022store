@@ -1,4 +1,5 @@
-Sitio web de comercio electrónico de Nextjs JOYERÍA STORE
+### `Sitio web de comercio electrónico de Nextjs JOYERÍA STORE`:
+----------------------------------------------------------------------------------------------------------------------------------
 
 Este es un proyecto de [Next.js](https://nextjs.org/) Este es un proyecto de [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
