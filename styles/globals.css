@@ -10,9 +10,31 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+/*===== GOOGLE FONTS =====*/
+@font-face {
+  font-family: 'La-Paloma';
+  src: url('../public/fonts/La-Paloma.ttf');
+}
+/*========== Font and typography ==========*/
+:root {
+  --body-font: -apple-system, BlinkMacSystemFont, 'La-Paloma', Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+span.special {
+  font-family: var(--body-font);
+  font-size: 30px;
+  font-weight: normal;
+  text-transform: capitalize;
+  position: relative;
+  padding-bottom: 10px;
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
 html {
   --scrollbarBG: #ffffff;
-  --thumbBG: #E6ACA9;
+  --thumbBG: #e6aca9;
 }
 body::-webkit-scrollbar {
   width: 11px;
@@ -25,7 +47,7 @@ body::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
 }
 body::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG) ;
+  background-color: var(--thumbBG);
   border-radius: 6px;
   border: 3px solid var(--scrollbarBG);
 }
@@ -67,12 +89,12 @@ textarea {
   @apply my-3 rounded-lg bg-green-100 p-3 text-green-700;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: var(--thumbBG)) {
   html {
-    color-scheme: dark;
+    color-scheme: var(--thumbBG);
   }
   body {
-    color: white;
-    background: black;
+    color: var(--scrollbarBG);
+    background: var(--thumbBG);
   }
 }

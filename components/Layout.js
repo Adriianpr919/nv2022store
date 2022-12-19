@@ -49,7 +49,7 @@ export default function Layout({ title, children }) {
       </Head>
       <div className="flex min-h-screen flex-col justify-between ">
         <header>
-          <MDBNavbar expand='lg' light bgColor='light' className="flex items-center px-12 justify-between shadow-md">
+          <MDBNavbar expand='lg' light bgColor='light' className="flex items-center px-4 justify-between shadow-md">
             <MDBContainer fluid>
               <MDBNavbarBrand href="/" rel="noopener noreferrer">
                 <Image
@@ -114,16 +114,22 @@ export default function Layout({ title, children }) {
             </MDBContainer>
           </MDBNavbar>
           <div
-            className='p-5 text-center bg-image'
-            style={{ backgroundImage: "url('https://mdbootstrap.com/img/new/slides/041.webp')", height: '400px' }}
+            className='p-5 text-center bg-image shadow-md'
+            style={{ backgroundImage: "url('https://images.pexels.com/photos/2942855/pexels-photo-2942855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')", height: '400px' }}
           >
-            <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+            <div className='mask' style={{ backgroundColor: '#bdc3c787' }}>
               <div className='d-flex justify-content-center align-items-center h-100'>
                 <div className='text-white'>
-                  <h1 className='mb-3'>Heading</h1>
-                  <h4 className='mb-3'>Subheading</h4>
-                  <MDBBtn tag="a" outline size="lg">
-                    Call to action
+                  <h1 className='mb-3'>
+                    <span className="special" style={{ textAlign: "center", color: "white", borderRadius: "20px 20px", padding: "2px 4px", backgroundColor: 'rgb(0 0 0 / 12%)' }}>
+                      Nury Valenzuela.
+                    </span>
+                  </h1>
+                  <h5 className="mb-4" style={{ textAlign: "center", color: "white", borderRadius: "20px 20px", padding: "2px 4px", backgroundColor: 'rgb(0 0 0 / 12%)' }}>
+                    Los mejores productos y la mejor calidad.
+                  </h5>
+                  <MDBBtn tag="a" href='/shop' rel="noopener noreferrer" role="button" className='btn btn-secondary' size="lg">
+                    Compra Ahora.
                   </MDBBtn>
                 </div>
               </div>
