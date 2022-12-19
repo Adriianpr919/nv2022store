@@ -42,7 +42,7 @@ const Footer = () => {
           </section>
           {/* Section: Text */}
           {/* Section: Social media */}
-          <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom mb-4">
+          <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <div className='me-5 d-none d-lg-block'>
               <span>Conéctate Con Nosotros En Las Redes Sociales. :*</span>
             </div>

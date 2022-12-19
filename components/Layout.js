@@ -7,8 +7,8 @@ import FooterDiv from './Footer';
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-{/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlobe, faBagShopping } from '@fortawesome/free-solid-svg-icons';*/ }
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
   MDBContainer,
@@ -34,7 +34,7 @@ export default function Layout({ title, children }) {
   return (
     <>
       <Head>
-        <title data-rh="true">{title ? title + ' - Nury Valenzuela' : 'Nury Valenzuela'}</title>
+        <title data-rh="true">{title ? title + ' - Nury Valenzuela.' : 'Nury Valenzuela.'}</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="format-detection" content="telephone=no" />
@@ -130,6 +130,9 @@ export default function Layout({ title, children }) {
                   </h5>
                   <MDBBtn tag="a" href='/shop' rel="noopener noreferrer" role="button" className='btn btn-secondary' size="lg">
                     Compra Ahora.
+                  </MDBBtn>
+                  <MDBBtn tag="a" href="#shop" rel="noopener noreferrer" role="button" className='btn btn-secondary' size="lg">
+                    <FontAwesomeIcon icon={faChevronDown} />
                   </MDBBtn>
                 </div>
               </div>
