@@ -5,13 +5,13 @@ import Link from 'next/link';
 export default function ProductItem({ product }) {
   return (
     <>
-      <div className="card text-center border border-primary shadow-0 ">
+      <div className="text-center border border-primary shadow-0 card">
         <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
           <Link href={`/product/${product.slug}`}>
             <img src={product.image} className="img-fluid rounded shadow object-cover h-64 w-full" alt={product.name} title={product.name} />
           </Link>
         </div>
-        <div className="">
+        <>
           <div className="card-header">{product.brand}</div>
           <div className="card-body">
             <h5 className="card-title">
@@ -28,7 +28,7 @@ export default function ProductItem({ product }) {
               <i className="fa fa-shopping-basket" /> Añadir Al Carrito.
             </button>
           </div>
-        </div>
+        </>
       </div>
     </>
   )
