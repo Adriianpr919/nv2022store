@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useContext } from 'react';
 import Layout from '../../components/Layout';
 import data from '../../utils/data';
-import Link from 'next/link';
-import Image from 'next/image';
+import { Store } from '../../utils/Store';
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -14,12 +15,25 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function ProductScreen() {
+  const { state, dispatch } = useContext(Store);
+
   const { query } = useRouter();
   const { slug } = query;
   const product = data.products.find((x) => x.slug === slug);
   if (!product) {
     return <div>PRODUCTOS NO ENCONTRADOS.</div>;
   }
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if (product.countInStock < quantity) {
+      alert('¡.Perdón.! El Producto Está Fuera De Stock.');
+      return;
+    }
+
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+  };
   return (
     <Layout title={product.name}>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -100,6 +114,7 @@ export default function ProductScreen() {
               <hr />
               <button
                 className="btn btn-primary"
+                onClick={addToCartHandler}
               >
                 <i className="fa fa-shopping-basket" /> Añadir Al Carrito.
               </button>
