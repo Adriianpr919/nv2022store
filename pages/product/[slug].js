@@ -28,7 +28,7 @@ export default function ProductScreen() {
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
     if (product.countInStock < quantity) {
-      alert('¡.Perdón.! El Producto Está Fuera De Stock.');
+      alert('¡.Perdón.! El Producto Está Agotado.');
       return;
     }
 

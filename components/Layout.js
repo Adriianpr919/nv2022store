@@ -32,7 +32,7 @@ import {
 
 export default function Layout({ title, children }) {
   const [showBasic, setShowBasic] = useState(false);
-  const { state, dispatch } = useContext(Store);
+  const { state } = useContext(Store);
   const { cart } = state;
   return (
     <>
