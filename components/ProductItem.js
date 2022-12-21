@@ -8,7 +8,7 @@ export default function ProductItem({ product }) {
       <div className="text-center border border-primary shadow-0 card">
         <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
           <Link href={`/product/${product.slug}`}>
-            <img src={product.image} className="img-fluid rounded shadow object-cover h-64 w-full" alt={product.name} title={product.name} />
+            <img src={product.image} className="img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail shadow-md card-img-top" alt={product.name} title={product.name} />
           </Link>
         </div>
         <>

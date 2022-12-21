@@ -1,5 +1,5 @@
 
-import data from '../utils/data'
+import data from '../utils/data';
 import Layout from '../components/Layout';
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
