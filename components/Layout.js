@@ -1,7 +1,7 @@
 import Head from 'next/head';
-{/**/ } import Link from 'next/link';
-{/**/ } import Image from 'next/image';
-import React, { useState, useContext } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import React, { useState, useContext, useEffect } from 'react';
 import { Store } from '../utils/Store';
 import Logo from '../public/Logonv.png';
 import FooterDiv from './Footer';
@@ -34,6 +34,10 @@ export default function Layout({ title, children }) {
   const [showBasic, setShowBasic] = useState(false);
   const { state } = useContext(Store);
   const { cart } = state;
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+  useEffect(() => {
+    setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
+  }, [cart.cartItems]);
   return (
     <>
       <Head>
@@ -103,15 +107,12 @@ export default function Layout({ title, children }) {
 
                 <Link className='mx-3' href='/login' rel="noopener noreferrer">
                   <MDBIcon fas icon='users' style={{ fontSize: "20px", color: "black" }} size='lg' />
-                  <MDBBadge color='danger' notification pill>
-                    1
-                  </MDBBadge>
                 </Link>
                 <Link className='mx-3' href='/cart' rel="noopener noreferrer">
                   <MDBIcon fas icon='shopping-cart' style={{ fontSize: "20px", color: "black" }} size='lg' />
-                  {cart.cartItems.length > 0 && (
+                  {cartItemsCount > 0 && (
                     <MDBBadge color='danger' notification pill className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
-                      {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                      {cartItemsCount}
                     </MDBBadge>
                   )}
                 </Link>
