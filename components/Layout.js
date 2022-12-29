@@ -1,11 +1,15 @@
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, Fragment } from 'react';
 import { ToastContainer } from 'react-toastify';
+//import { Menu } from '@headlessui/react';
+import DropdownLink from './DropdownLink';
 import 'react-toastify/dist/ReactToastify.css';
 import { Store } from '../utils/Store';
+//import { SearchIcon } from '@heroicons/react/outline';
 import Logo from '../public/Logonv.png';
 import FooterDiv from './Footer';
 
@@ -36,12 +40,17 @@ import {
 export default function Layout({ title, children }) {
   const [showBasic, setShowBasic] = useState(false);
   const { status, data: session } = useSession();
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
+  const logoutClickHandler = () => {
+    Cookies.remove('cart');
+    dispatch({ type: 'CART_RESET' });
+    signOut({ callbackUrl: '/login' });
+  };
   return (
     <>
       <Head>
@@ -111,11 +120,27 @@ export default function Layout({ title, children }) {
                 </MDBNavbarNav>
 
                 {status === 'loading' ? (
-                  'Loading'
-                  ) : session?.user ? (
-                    session.user.name
+                  'Cargando'
+                ) : session?.user ? (
+                  <MDBDropdown>
+                    <MDBDropdownToggle tag='a' className='nav-link' role='button'>
+                      <i className="fa-solid fa-users"></i> {session.user.name}.
+                    </MDBDropdownToggle>
+                    <MDBDropdownMenu>
+                      <MDBDropdownItem className="text-lg font-bold" link href="/profile" value={DropdownLink}>
+                      <i className="fa-solid fa-circle-user"></i> Mi Perfil.
+                        </MDBDropdownItem>
+                      <MDBDropdownItem divider />
+                      <MDBDropdownItem link href="/order-history" value={DropdownLink}>
+                      <i className="fa-solid fa-truck-fast"></i> Historial De Pedidos.
+                        </MDBDropdownItem>
+                      <MDBDropdownItem link href="#" onClick={logoutClickHandler}>
+                      <i className="fa-solid fa-power-off"></i> Cerrar Sesión.
+                        </MDBDropdownItem>
+                    </MDBDropdownMenu>
+                  </MDBDropdown>
                 ) : (
-                  <Link className='mx-3' href='/login' rel="noopener noreferrer">
+                  <Link className='mx-3' href="/login" rel="noopener noreferrer">
                     <MDBIcon fas icon='users' style={{ fontSize: "20px", color: "black" }} size='lg' />
                   </Link>
                 )}
