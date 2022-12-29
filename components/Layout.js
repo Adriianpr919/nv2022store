@@ -1,7 +1,10 @@
+import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import React, { useState, useContext, useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Store } from '../utils/Store';
 import Logo from '../public/Logonv.png';
 import FooterDiv from './Footer';
@@ -32,6 +35,7 @@ import {
 
 export default function Layout({ title, children }) {
   const [showBasic, setShowBasic] = useState(false);
+  const { status, data: session } = useSession();
   const { state } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
@@ -54,6 +58,7 @@ export default function Layout({ title, children }) {
         <link rel="apple-touch-icon" href="/logo.ico" />
         <meta name="theme-color" content="#E6ACA9" />
       </Head>
+      <ToastContainer position="bottom-center" limit={1} />
       <div className="flex min-h-screen flex-col justify-between ">
         <header>
           <MDBNavbar expand='lg' light bgColor='light' className="flex items-center px-4 justify-between shadow-md">
@@ -105,9 +110,15 @@ export default function Layout({ title, children }) {
                   </MDBNavbarItem>
                 </MDBNavbarNav>
 
-                <Link className='mx-3' href='/login' rel="noopener noreferrer">
-                  <MDBIcon fas icon='users' style={{ fontSize: "20px", color: "black" }} size='lg' />
-                </Link>
+                {status === 'loading' ? (
+                  'Loading'
+                  ) : session?.user ? (
+                    session.user.name
+                ) : (
+                  <Link className='mx-3' href='/login' rel="noopener noreferrer">
+                    <MDBIcon fas icon='users' style={{ fontSize: "20px", color: "black" }} size='lg' />
+                  </Link>
+                )}
                 <Link className='mx-3' href='/cart' rel="noopener noreferrer">
                   <MDBIcon fas icon='shopping-cart' style={{ fontSize: "20px", color: "black" }} size='lg' />
                   {cartItemsCount > 0 && (
