@@ -64,6 +64,7 @@ export default function PlaceOrderScreen() {
 
   return (
     <Layout title="Realizar Pedido.">
+      <hr />
       <CheckoutWizard activeStep={3} />
       <h1 className="mb-4 text-xl">Realizar Pedido.</h1>
       {cartItems.length === 0 ? (
