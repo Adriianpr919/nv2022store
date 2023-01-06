@@ -120,7 +120,7 @@ function OrderScreen() {
   }
 
   return (
-    <Layout title={`Order ${orderId}`}>
+    <Layout title={`# ID ${orderId}`}>
       <hr />
       <h1 className="mb-4 text-xl">{`Order ${orderId}`}</h1>
       <div className="card text-center border border-primary shadow-0 ">
