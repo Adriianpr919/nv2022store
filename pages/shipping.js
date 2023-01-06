@@ -85,7 +85,7 @@ export default function ShippingScreen() {
                 id="address"
                 {...register('address', {
                   required: 'Por Favor Ingrese La Dirección.',
-                  minLength: { value: 50, message: 'La Dirección Tiene Más De 40 Caracteres.' },
+                  minLength: { value: 10, message: 'La Dirección Tiene Más De 9 Caracteres.' },
                 })}
               />
               <label htmlFor="address">

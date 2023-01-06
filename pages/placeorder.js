@@ -177,7 +177,7 @@ export default function PlaceOrderScreen() {
                     onClick={placeOrderHandler}
                     className="w-100 btn btn-lg btn-warning"
                   >
-                    {loading ? 'Cargando.' : 'Realizar Pedido.'}
+                    {loading ? 'Cargando.' : 'Realizar Pedido.'} <i className="fa-solid fa-eye"></i>
                   </button>
                 </li>
               </ul>
