@@ -41,7 +41,7 @@ function OrderHistoryScreen() {
       <hr />
       <div className="card text-center border border-primary shadow-0 ">
         <div className="card-body">
-        <h1 className="mb-4 text-xl">Mis Pedidos.</h1>
+          <h1 className="mb-4 text-xl">Mis Pedidos.</h1>
           {loading ? (
             <MDBSpinner className='me-2' style={{ width: '3rem', height: '3rem' }} role='status'>
               <span className='visually-hidden'>Cargando.</span>
@@ -66,20 +66,20 @@ function OrderHistoryScreen() {
                     <tr key={order._id} className="border-b">
                       <td>
                         <div className="d-flex align-items-center">
-                          <div class="ms-3">
-                            <p class="fw-bold mb-1">
+                          <div className="ms-3">
+                            <p className="fw-bold mb-1">
                               {order._id.substring(20, 24)}
                             </p>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="fw-normal mb-1">
+                        <p className="fw-normal mb-1">
                           {order.createdAt.substring(0, 10)}
                         </p>
                       </td>
                       <td>
-                        <span class="badge badge-success rounded-pill d-inline">
+                        <span className="badge badge-success rounded-pill d-inline">
                           $ {order.totalPrice} - COP
                         </span>
                       </td>
@@ -96,7 +96,9 @@ function OrderHistoryScreen() {
                       <td>
                         <Link href={`/order/${order._id}`} passHref>
                           <div>
-                            <a>Detalles.</a>
+                            <a>
+                              <i className="fa-solid fa-eye"></i> Ver Detalles.
+                            </a>
                           </div>
                         </Link>
                       </td>
