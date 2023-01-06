@@ -75,6 +75,9 @@ export default function ProfileScreen() {
             <div className="form-floating mb-4">
               <input
                 type="email"
+                className="form-control"
+                placeholder="tucorreo@example.com"
+                id="email"
                 {...register('email', {
                   required: 'Por favor Ingrese El Correo Electrónico.',
                   pattern: {
@@ -82,10 +85,6 @@ export default function ProfileScreen() {
                     message: 'Por favor Introduzca Un Correo Electrónico Válido.',
                   },
                 })}
-                className="form-control"
-                placeholder="tucorreo@example.com"
-                id="email"
-                autoFocus
               ></input>
               <label htmlFor="email">
                 <i className="fas fa-at"></i> Cambiar Tu Correo. <span className="required">:*</span>
@@ -96,15 +95,13 @@ export default function ProfileScreen() {
             </div>
             <div className="form-floating mb-4">
               <input
-                type="password"
-                {...register('password', {
-                  required: 'Por Favor, Ingrese Contraseña.',
-                  minLength: { value: 6, message: 'La Contraseña Tiene Más De 5 Caracteres.' },
-                })}
                 className="form-control"
                 placeholder="La Contraseña."
+                type="password"
                 id="password"
-                autoFocus
+                {...register('password', {
+                  minLength: { value: 6, message: 'La Contraseña Tiene Más De 5 Caracteres.' },
+                })}
               ></input>
               <label htmlFor="password">
                 <i className="fas fa-key"></i> Cambiar La Contraseña. <span className="required">:*</span>
@@ -120,14 +117,12 @@ export default function ProfileScreen() {
                 type="password"
                 id="confirmPassword"
                 {...register('confirmPassword', {
-                  required: 'Por Favor Ingrese Confirmar Contraseña.',
                   validate: (value) => value === getValues('password'),
                   minLength: {
                     value: 6,
                     message: 'Confirmar La Contraseña Tiene Más De 5 Caracteres.',
                   },
                 })}
-                autoFocus
               />
               <label htmlFor="confirmPassword">
                 <i className="fas fa-key"></i> Cambiar Confirmar La Contraseña. <span className="required">:*</span>
