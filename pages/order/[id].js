@@ -122,7 +122,7 @@ function OrderScreen() {
   return (
     <Layout title={`# ID ${orderId}`}>
       <hr />
-      <h1 className="mb-4 text-xl">{`Order ${orderId}`}</h1>
+      <h1 className="mb-4 text-xl">{`# ID ${orderId}`}</h1>
       <div className="card text-center border border-primary shadow-0 ">
         <div className="card-body">
           {loading ? (
