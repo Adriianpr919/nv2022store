@@ -51,12 +51,9 @@ function OrderHistoryScreen() {
           ) : (
             <div className="table-responsive">
               <table className="table caption-top  align-middle mb-0 bg-white">
-                <caption>
-                  Mis Pedidos.
-                </caption>
                 <thead className="bg-light border-b">
                   <tr>
-                    <th className="px-5 text-left">ID</th>
+                    <th className="p-5 text-left">ID</th>
                     <th className="p-5 text-left">FECHA</th>
                     <th className="p-5 text-left">TOTAL</th>
                     <th className="p-5 text-left">PAGADO</th>
@@ -98,7 +95,9 @@ function OrderHistoryScreen() {
                       </td>
                       <td>
                         <Link href={`/order/${order._id}`} passHref>
-                          <a>Detalles.</a>
+                          <div>
+                            <a>Detalles.</a>
+                          </div>
                         </Link>
                       </td>
                     </tr>
