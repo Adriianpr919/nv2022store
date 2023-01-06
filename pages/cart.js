@@ -4,6 +4,8 @@ import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -29,9 +31,14 @@ function CartScreen() {
   const removeItemHandler = (item) => {
     dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
-  const updateCartHandler = (item, qty) => {
+  const updateCartHandler = async (item, qty) => {
     const quantity = Number(qty);
+    const { data } = await axios.get(`/api/products/${item._id}`);
+    if (data.countInStock < quantity) {
+      return toast.error('¡.Perdón.! El Producto Está Agotado.');
+    }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+    toast.success('Producto Actualizado En El Carrito.');
   };
   return (
     <Layout title="Carrito De Compras.">
@@ -51,9 +58,7 @@ function CartScreen() {
       <hr />
       {cartItems.length === 0 ? (
         <div>
-          <h5 className="mb-4" style={{ textAlign: "center", color: "black", borderRadius: "20px 20px", padding: "2px 4px", backgroundColor: 'rgb(0 0 0 / 12%)' }}>
-            El Carrito Esta Vacío. <Link href="/" className="btn btn-secondary btn-rounded btn-lg" data-mdb-ripple-color="#000000"><i className="fa-solid fa-chevron-right"></i> Ir De Compras. <i className="fa-solid fa-chevron-left"></i></Link>
-          </h5>
+          El Carrito Esta Vacío. <Link href="/"><i className="fa-solid fa-chevron-right"></i> Ir De Compras. <i className="fa-solid fa-chevron-left"></i></Link>
         </div>
       ) : (
         <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
@@ -142,7 +147,7 @@ function CartScreen() {
                           <div className="d-flex justify-content-between mb-5">
                             <MDBTypography tag="h5" className="text-uppercase">
                               <span style={{ color: "green", fontSize: "15px" }} className="badge badge-success mb-2">
-                                SubTotal. ({cartItems.reduce((a, c) => a + c.quantity, 0)}):*
+                                Sub-Total. ({cartItems.reduce((a, c) => a + c.quantity, 0)}):*
                               </span>
                             </MDBTypography>
                             <MDBTypography tag="h5" style={{ color: "green", fontSize: "15px" }} className="badge badge-success mb-2">

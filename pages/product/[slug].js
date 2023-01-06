@@ -1,10 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
+import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 import Layout from '../../components/Layout';
-import data from '../../utils/data';
+import Product from '../../models/Product';
+import db from '../../utils/db';
 import { Store } from '../../utils/Store';
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
@@ -14,22 +16,20 @@ import {
   MDBIcon
 } from 'mdb-react-ui-kit';
 
-export default function ProductScreen() {
+export default function ProductScreen(props) {
+  const { product } = props;
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
-  const { query } = useRouter();
-  const { slug } = query;
-  const product = data.products.find((x) => x.slug === slug);
   if (!product) {
-    return <div>PRODUCTOS NO ENCONTRADOS.</div>;
+    return <Layout title="PRODUCTOS NO ENCONTRADOS.">PRODUCTOS NO ENCONTRADOS.</Layout>;
   }
-  const addToCartHandler = () => {
+  const addToCartHandler = async () => {
     const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
 
-    if (product.countInStock < quantity) {
-      alert('¡.Perdón.! El Producto Está Agotado.');
-      return;
+    if (data.countInStock < quantity) {
+      return toast.error('¡.Perdón.! El Producto Está Agotado.');
     }
 
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
@@ -114,7 +114,7 @@ export default function ProductScreen() {
               </p>
               <hr />
               <button
-                className="btn btn-primary"
+                className="w-100 btn btn-lg btn-primary"
                 onClick={addToCartHandler}
               >
                 <i className="fa fa-shopping-basket" /> Añadir Al Carrito.
@@ -125,4 +125,18 @@ export default function ProductScreen() {
       </figure>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+
+  await db.connect();
+  const product = await Product.findOne({ slug }).lean();
+  await db.disconnect();
+  return {
+    props: {
+      product: product ? db.convertDocToObj(product) : null,
+    },
+  };
 }

@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, addToCartHandler }) {
   return (
     <>
       <div className="text-center border border-primary shadow-0 card">
@@ -24,7 +24,10 @@ export default function ProductItem({ product }) {
             </p>
           </div>
           <div className="card-footer">
-            <button type="button" className="btn btn-primary">
+            <button
+            type="button"
+            className="w-100 btn btn-lg btn-primary"
+            onClick={() => addToCartHandler(product)}>
               <i className="fa fa-shopping-basket" /> Añadir Al Carrito.
             </button>
           </div>

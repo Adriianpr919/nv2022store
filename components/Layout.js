@@ -128,15 +128,15 @@ export default function Layout({ title, children }) {
                     </MDBDropdownToggle>
                     <MDBDropdownMenu>
                       <MDBDropdownItem className="text-lg font-bold" link href="/profile" id={DropdownLink}>
-                      <i className="fa-solid fa-circle-user"></i> Mi Perfil.
-                        </MDBDropdownItem>
+                        <i className="fa-solid fa-circle-user"></i> Mi Perfil.
+                      </MDBDropdownItem>
                       <MDBDropdownItem divider />
                       <MDBDropdownItem link href="/order-history" id={DropdownLink}>
-                      <i className="fa-solid fa-truck-fast"></i> Historial De Pedidos.
-                        </MDBDropdownItem>
+                        <i className="fa-solid fa-truck-fast"></i> Historial De Pedidos.
+                      </MDBDropdownItem>
                       <MDBDropdownItem link href="#" onClick={logoutClickHandler}>
-                      <i className="fa-solid fa-power-off"></i> Cerrar Sesión.
-                        </MDBDropdownItem>
+                        <i className="fa-solid fa-power-off"></i> Cerrar Sesión.
+                      </MDBDropdownItem>
                     </MDBDropdownMenu>
                   </MDBDropdown>
                 ) : (

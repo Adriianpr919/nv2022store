@@ -31,8 +31,8 @@ function Auth({ children }) {
   });
   if (status === 'loading') {
     return <MDBSpinner className='me-2' style={{ width: '3rem', height: '3rem' }} role='status'>
-      <span className='visually-hidden'>Cargando.</span>
-    </MDBSpinner>;
+    <span className='visually-hidden'>Cargando.</span>
+  </MDBSpinner>;
   }
 
   return children;

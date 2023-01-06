@@ -8,7 +8,7 @@ export default function Unauthorized() {
   const { message } = router.query;
 
   return (
-    <Layout title="Unauthorized Page">
+    <Layout title="Página NO Autorizada.">
       <h1 className="text-xl">¡.Acceso Denegado.!</h1>
       {message && <div className="mb-4 text-red-500">{message}</div>}
     </Layout>
