@@ -123,7 +123,7 @@ function OrderScreen() {
     <Layout title={`# ID ${orderId}`}>
       <hr />
       <h1 className="mb-4 text-xl">{`# ID ${orderId}`}</h1>
-      <div className="card text-center border border-primary shadow-0 ">
+      <div className="card border border-primary shadow-0 ">
         <div className="card-body">
           {loading ? (
             <MDBSpinner className='me-2' style={{ width: '3rem', height: '3rem' }} role='status'>
@@ -132,125 +132,224 @@ function OrderScreen() {
           ) : error ? (
             <div className="alert-error">{error}</div>
           ) : (
-            <div className="grid md:grid-cols-4 md:gap-5">
-              <div className="overflow-x-auto md:col-span-3">
-                <div className="card  p-5">
-                  <h2 className="mb-2 text-lg">Dirección De Envío. :*</h2>
-                  <div>
-                    {shippingAddress.fullName}, {shippingAddress.address},{' '}
-                    {shippingAddress.city}, {shippingAddress.postalCode},{' '}
-                    {shippingAddress.country}
-                  </div>
-                  {isDelivered ? (
-                    <div className="alert-success">Entregado En {deliveredAt}</div>
-                  ) : (
-                    <div className="alert-error">No Entregado.</div>
-                  )}
-                </div>
-
-                <div className="card p-5">
-                  <h2 className="mb-2 text-lg">Método De Pago. :*</h2>
-                  <div>{paymentMethod}</div>
-                  {isPaid ? (
-                    <div className="alert-success">Pagado En {paidAt}</div>
-                  ) : (
-                    <div className="alert-error">NO Pagado.</div>
-                  )}
-                </div>
-
-                <div className="card overflow-x-auto p-5">
-                  <h2 className="mb-2 text-lg">Encargar Artículos.</h2>
-                  <table className="min-w-full">
-                    <thead className="border-b">
-                      <tr>
-                        <th className="px-5 text-left">ARTÍCULO</th>
-                        <th className="    p-5 text-right">CANTIDAD</th>
-                        <th className="  p-5 text-right">PRECIO</th>
-                        <th className="p-5 text-right">SUB-TOTAL</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {orderItems.map((item) => (
-                        <tr key={item._id} className="border-b">
-                          <td>
-                            <Link href={`/product/${item.slug}`}>
-                              <div>
-                                <a className="flex items-center">
-                                  <Image
-                                    src={item.image}
-                                    alt={item.name}
-                                    width={50}
-                                    height={50}
-                                  ></Image>
-                                  &nbsp;
-                                  {item.name}
-                                </a>
-                              </div>
-                            </Link>
-                          </td>
-                          <td className=" p-5 text-right">{item.quantity}</td>
-                          <td className="p-5 text-right">$ {item.price} - COP</td>
-                          <td className="p-5 text-right">
-                            $ {item.quantity * item.price} - COP
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div>
-                <div className="card  p-5">
-                  <h2 className="mb-2 text-lg">Resumen Del Pedido. :*</h2>
-                  <ul>
-                    <li>
-                      <div className="mb-2 flex justify-between">
-                        <div>Elementos. :*</div>
-                        <div>$ {itemsPrice} - COP</div>
-                      </div>
-                    </li>{' '}
-                    <li>
-                      <div className="mb-2 flex justify-between">
-                        <div>Impuesto. :*</div>
-                        <div>$ {taxPrice} - COP</div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="mb-2 flex justify-between">
-                        <div>Envío. :*</div>
-                        <div>$ {shippingPrice} - COP</div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="mb-2 flex justify-between">
-                        <div>Total. :*</div>
-                        <div>$ {totalPrice} - COP</div>
-                      </div>
-                    </li>
-                    {!isPaid && (
-                      <li>
-                        {isPending ? (
-                          <MDBSpinner className='me-2' style={{ width: '3rem', height: '3rem' }} role='status'>
-                            <span className='visually-hidden'>Cargando.</span>
-                          </MDBSpinner>
-                        ) : (
-                          <div className="w-full">
-                            <PayPalButtons
-                              createOrder={createOrder}
-                              onApprove={onApprove}
-                              onError={onError}
-                            ></PayPalButtons>
+            <section style={{ backgroundColor: '#eee' }}>
+              <div className="container py-5">
+                <div className="card">
+                  <div className="card-body">
+                    <div className="row d-flex justify-content-center pb-5">
+                      <div className="col-md-7 col-xl-5 mb-4 mb-md-0">
+                        <div className="py-4 d-flex flex-row">
+                          <h5>
+                            <span className="far fa-check-square pe-2" /><b>ELEGIBLE</b> |
+                          </h5>
+                          <span className="ps-2">Pagar</span>
+                        </div>
+                        <div className="d-flex pt-2">
+                          <div>
+                            <p>
+                              <b>Dirección De Envío. :*</b>
+                            </p>
                           </div>
-                        )}
-                        {loadingPay && <MDBSpinner className='me-2' style={{ width: '3rem', height: '3rem' }} role='status'>
-                          <span className='visually-hidden'>Cargando.</span>
-                        </MDBSpinner>}
-                      </li>
-                    )}
-                  </ul>
+                        </div>
+                        <p>
+                          {shippingAddress.fullName}, {shippingAddress.address},{' '}
+                          {shippingAddress.city}, {shippingAddress.postalCode},{' '}
+                          {shippingAddress.country}
+                        </p>
+                        <p>
+                          {isDelivered ? (
+                            <div className="alert-success">Entregado En {deliveredAt}</div>
+                          ) : (
+                            <div className="alert-error">No Entregado.</div>
+                          )}
+                        </p>
+                        <hr />
+                        <div className="d-flex pt-2">
+                          <div>
+                            <p>
+                              <b>Método De Pago. :*</b>
+                            </p>
+                          </div>
+                          <div className="ms-auto">
+                            <p className="text-primary">
+                              <span className="badge badge-warning rounded-pill d-inline">{paymentMethod}</span>
+                            </p>
+                          </div>
+                        </div>
+                        <p>
+                          {isPaid ? (
+                            <div className="alert-success">Pagado En {paidAt}</div>
+                          ) : (
+                            <div className="alert-error">NO Pagado.</div>
+                          )}
+                        </p>
+                        <hr />
+                        <div className="pt-2">
+                          <div className="d-flex pb-2">
+                            <div>
+                              <p>
+                                <b>Encargar Artículos.</b>
+                              </p>
+                            </div>
+                          </div>
+                          <p>
+                            <div className="table-responsive">
+                              <table className="table align-middle mb-0 bg-white">
+                                <thead className="border-b bg-light">
+                                  <tr>
+                                    <th className="p-5 text-left">
+                                      <span className="badge badge-primary rounded-pill d-inline">ARTÍCULO</span>
+                                    </th>
+                                    <th className="    p-5 text-right">
+                                      <span className="badge badge-primary rounded-pill d-inline">CANTIDAD</span>
+                                    </th>
+                                    <th className="  p-5 text-right">
+                                      <span className="badge badge-primary rounded-pill d-inline">PRECIO</span>
+                                    </th>
+                                    <th className="p-5 text-right">
+                                      <span className="badge badge-primary rounded-pill d-inline">SUB-TOTAL</span>
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {orderItems.map((item) => (
+                                    <tr key={item._id} className="border-b">
+                                      <td>
+                                        <Link href={`/product/${item.slug}`}>
+                                          <div className="d-flex align-items-center">
+                                            <a className="flex items-center">
+                                              <Image
+                                                src={item.image}
+                                                alt={item.name}
+                                                width={50}
+                                                height={50}
+                                                className="rounded-circle"
+                                              ></Image>
+                                              <div className="ms-3">
+                                                <p className="fw-bold mb-1">
+                                                  <span className="badge badge-secondary rounded-pill d-inline">{item.name}</span>
+                                                </p>
+                                              </div>
+                                            </a>
+                                          </div>
+                                        </Link>
+                                      </td>
+                                      <td className=" p-5 text-right">
+                                        <span className="badge badge-warning rounded-pill d-inline">{item.quantity}</span>
+                                      </td>
+                                      <td className="p-5 text-right">
+                                        <span className="badge badge-success rounded-pill d-inline">$ {item.price} - COP</span>
+                                      </td>
+                                      <td className="p-5 text-right">
+                                        <span className="badge badge-success rounded-pill d-inline">$ {item.quantity * item.price} - COP</span>
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-md-5 col-xl-4 offset-xl-1">
+                        <div className="py-4 d-flex justify-content-end">
+                          <h6>
+                            <Link href="/cart" className='text-danger'>
+                              <i className="fa-solid fa-circle-xmark"></i> Cancelar Y Volver Al Sitio Web.
+                            </Link>
+                          </h6>
+                        </div>
+                        <div className="rounded d-flex flex-column p-2" style={{ backgroundColor: '#f8f9fa' }}>
+                          <div className="p-2 me-3">
+                            <h4>Resumen Del Pedido. :*</h4>
+                          </div>
+                          <div className="border-top px-2 mx-2" />
+                          <div className="p-2 d-flex">
+                            <div className="col-8">
+                              <span className="badge badge-primary rounded-pill d-inline">Elementos. :*</span>
+                            </div>
+                            <div className="ms-auto">
+                              <span class="badge badge-success rounded-pill d-inline">$ {itemsPrice} - COP</span>
+                            </div>
+                          </div>
+                          <div className="border-top px-2 mx-2" />
+                          <div className="p-2 d-flex">
+                            <div className="col-8">
+                              <span className="badge badge-primary rounded-pill d-inline">Impuesto. :*</span>
+                            </div>
+                            <div className="ms-auto">
+                              <span class="badge badge-success rounded-pill d-inline">$ {taxPrice} - COP</span>
+                            </div>
+                          </div>
+                          <div className="border-top px-2 mx-2" />
+                          <div className="p-2 d-flex">
+                            <div className="col-8">
+                              <span className="badge badge-primary rounded-pill d-inline">Envío. :*</span>
+                            </div>
+                            <div className="ms-auto">
+                              <span class="badge badge-success rounded-pill d-inline">$ {shippingPrice} - COP</span>
+                            </div>
+                          </div>
+                          <div className="border-top px-2 mx-2" />
+                          <div className="p-2 d-flex">
+                            <div className="col-8">
+                              <b><span className="badge badge-primary rounded-pill d-inline">Total. :*</span></b>
+                            </div>
+                            <div className="ms-auto">
+                              <b className="text-success"><span class="badge badge-success rounded-pill d-inline">$ {totalPrice} - COP</span></b>
+                            </div>
+                          </div>
+                          <div className="border-top px-2 mx-2" />
+                          <div className="p-2 d-flex pt-3">
+                            <div className="col-12">
+                              <b>
+                                <div>
+                                  {!isPaid && (
+                                    <div>
+                                      {isPending ? (
+                                        <MDBSpinner className='me-2' style={{ width: '3rem', height: '3rem' }} role='status'>
+                                          <span className='visually-hidden'>Cargando.</span>
+                                        </MDBSpinner>
+                                      ) : (
+                                        <div>
+                                          <PayPalButtons
+                                            createOrder={createOrder}
+                                            onApprove={onApprove}
+                                            onError={onError}
+                                          ></PayPalButtons>
+                                        </div>
+                                      )}
+                                      {loadingPay && <MDBSpinner className='me-2' style={{ width: '3rem', height: '3rem' }} role='status'>
+                                        <span className='visually-hidden'>Cargando.</span>
+                                      </MDBSpinner>}
+                                    </div>
+                                  )}
+                                </div>
+                              </b>
+                            </div>
+                          </div>
+                          <div className="border-top px-2 mx-2" />
+                          <div className="p-2 d-flex">
+                            <div className="col-12">
+                              <span className="badge badge-warning mb-2 text-center">
+                                CONTACTAR EL VENDEDOR. :*
+                              </span>
+                              <Link
+                                href="https://api.whatsapp.com/send?phone=573133966349&text=Hola%2C%20vengo%20desde%20tu%20perfil%20de%20Instagram%20y%20deseo%20obtener%20mas%20informaci%C3%B3n%20%20%F0%9F%92%8E"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-100 btn btn-lg btn-success">
+                                <i className="fab fa-whatsapp" style={{ fontSize: "20px" }}></i> Comprar Por WhatsAPP.
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
           )}
         </div>
       </div>
