@@ -134,3 +134,69 @@ textarea {
   border-bottom-right-radius: 16px;
   }
   }
+
+  /*===== ABOUT CSS =====*/
+  .contentStickyImage {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .contentStickyImage:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  .contentStickyImage > div {
+    flex: 1 1 calc(992px / 2);
+  }
+
+  .AbouTimg {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+
+  .AbouTimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .AbouTtext {
+    padding: 1.25rem;
+  }
+
+  .AbouTimages {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .AbouTimages img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .AbouTtitle {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .about {
+    margin-bottom: 1rem;
+  }
+
+  .AbouTsub-title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 991px) {
+    .AbouTimg {
+        position: static;
+    }
+  }

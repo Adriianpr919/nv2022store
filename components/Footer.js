@@ -182,7 +182,7 @@ const Footer = () => {
       {/* Copyright */}
       <div className="text-center p-4 bg-light shadow-inner">
         CopyRight &copy; {new Date().getFullYear()}. :*
-        <a className="text-reset fw-bold" href="https://nuryvalenzuelajoyeria.com.co/" rel="noopener noreferrer">nuryvalenzuelajoyeria.com</a>
+        <Link className="text-reset fw-bold" href="/" rel="noopener noreferrer">nuryvalenzuelajoyeria.com</Link>
       </div>
       {/* Copyright */}
     </>

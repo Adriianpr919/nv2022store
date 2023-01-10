@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
-import React, { useState, useContext, useEffect, Fragment } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 //import { Menu } from '@headlessui/react';
 import DropdownLink from './DropdownLink';
@@ -12,11 +12,10 @@ import { Store } from '../utils/Store';
 //import { SearchIcon } from '@heroicons/react/outline';
 import Logo from '../public/Logonv.png';
 import FooterDiv from './Footer';
+import BannerLogo from './BannerLogo';
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
   MDBContainer,
@@ -101,13 +100,42 @@ export default function Layout({ title, children }) {
                   <MDBNavbarItem>
                     <MDBDropdown>
                       <MDBDropdownToggle tag='a' className='nav-link' role='button'>
-                        <MDBIcon fas icon="shopping-bag" /> Ver Productos.
+                        <i className="fa-solid fa-circle-info"></i> &Aacute;REA LEGAL.
                       </MDBDropdownToggle>
                       <MDBDropdownMenu>
-                        <MDBDropdownItem className="text-lg font-bold" link>Compras Por Categorías.</MDBDropdownItem>
+                        <MDBDropdownItem className="text-lg font-bold" link href="/options1" rel="noopener noreferrer">
+                          <i className="fa fa-angle-double-right wv_circle" /> Términos y Condiciones.
+                        </MDBDropdownItem>
                         <MDBDropdownItem divider />
-                        <MDBDropdownItem link>NUEVOS.</MDBDropdownItem>
-                        <MDBDropdownItem link>DESTACADOS.</MDBDropdownItem>
+                        <MDBDropdownItem link href="/options2" rel="noopener noreferrer">
+                          <i className="fa fa-angle-double-right wv_circle" /> Políticas De Envios, Cambios, Devoluciones Y
+                          Garantías.
+                        </MDBDropdownItem>
+                        <MDBDropdownItem link href="/faq" rel="noopener noreferrer">
+                          <i className="fa fa-angle-double-right wv_circle" /> Preguntas Frecuentes.
+                        </MDBDropdownItem>
+                        <MDBDropdownItem link href="/about" rel="noopener noreferrer">
+                          <i className="fa fa-angle-double-right wv_circle" /> Quiénes Somos.
+                        </MDBDropdownItem>
+                      </MDBDropdownMenu>
+                    </MDBDropdown>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBDropdown>
+                      <MDBDropdownToggle tag='a' className='nav-link' role='button'>
+                        <MDBIcon fas icon="shopping-bag" /> VER PRODUCTOS.
+                      </MDBDropdownToggle>
+                      <MDBDropdownMenu>
+                        <MDBDropdownItem className="text-lg font-bold" link>
+                          <i className="fa fa-angle-double-right wv_circle" /> Compras Por Categorías.
+                        </MDBDropdownItem>
+                        <MDBDropdownItem divider />
+                        <MDBDropdownItem link>
+                          <i className="fa fa-angle-double-right wv_circle" /> NUEVOS.
+                        </MDBDropdownItem>
+                        <MDBDropdownItem link>
+                          <i className="fa fa-angle-double-right wv_circle" /> DESTACADOS.
+                        </MDBDropdownItem>
                       </MDBDropdownMenu>
                     </MDBDropdown>
                   </MDBNavbarItem>
@@ -155,31 +183,7 @@ export default function Layout({ title, children }) {
               </MDBCollapse>
             </MDBContainer>
           </MDBNavbar>
-          <div
-            className='p-5 text-center bg-image shadow-md'
-            style={{ backgroundImage: "url('https://images.pexels.com/photos/2942855/pexels-photo-2942855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')", height: '400px' }}
-          >
-            <div className='mask' style={{ backgroundColor: '#bdc3c787' }}>
-              <div className='d-flex justify-content-center align-items-center h-100'>
-                <div className='text-white'>
-                  <h1 className='mb-3'>
-                    <span className="special" style={{ textAlign: "center", color: "white", borderRadius: "20px 20px", padding: "2px 4px", backgroundColor: 'rgb(0 0 0 / 12%)' }}>
-                      Nury Valenzuela.
-                    </span>
-                  </h1>
-                  <h5 className="mb-4" style={{ textAlign: "center", color: "white", borderRadius: "20px 20px", padding: "2px 4px", backgroundColor: 'rgb(0 0 0 / 12%)' }}>
-                    Los mejores productos y la mejor calidad.
-                  </h5>
-                  <MDBBtn tag="a" href='/shop' rel="noopener noreferrer" role="button" className='btn btn-secondary' size="lg">
-                    Compra Ahora.
-                  </MDBBtn>
-                  <MDBBtn tag="a" href="#shop" rel="noopener noreferrer" role="button" className='btn btn-secondary' size="lg">
-                    <FontAwesomeIcon icon={faChevronDown} />
-                  </MDBBtn>
-                </div>
-              </div>
-            </div>
-          </div>
+          <BannerLogo />
         </header>
         <main className="container m-auto mt-4 px-4">
           {children}
