@@ -27,7 +27,7 @@ export default function Home({ products }) {
   };
   return (
     <Layout title="Página De Inicio.">
-      <h2 className="h2 my-4" id='shop'>PRODUCTOS DESTACADOS.</h2>
+      <h2 className="h2 my-4" id='shop'><i className="fa-solid fa-bag-shopping"></i> PRODUCTOS DESTACADOS.</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-1">
         {products.map((product) => (
           <ProductItem
