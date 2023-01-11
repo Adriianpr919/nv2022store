@@ -54,10 +54,10 @@ export default function Layout({ title, children }) {
     <>
       <Head>
         <title data-rh="true">{title ? title + ' - Nury Valenzuela.' : 'Nury Valenzuela.'}</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="format-detection" content="telephone=no" />
-        <meta http-equiv="Content-Language" lang="es-ES" />
+        <meta httpEquiv="Content-Language" lang="es-ES" />
         <meta name="robots" content="all" />
         <meta name="geo.placename" content="Villavicencio, Meta, Colombia." />
         <meta name="HandheldFriendly" content="True" />
