@@ -218,7 +218,7 @@ export default function PlaceOrderScreen() {
                           <span className="badge badge-primary rounded-pill d-inline">Elementos. :*</span>
                         </div>
                         <div className="ms-auto">
-                          <span class="badge badge-success rounded-pill d-inline">$ {itemsPrice} - COP</span>
+                          <span className="badge badge-success rounded-pill d-inline">$ {itemsPrice} - COP</span>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />
@@ -227,7 +227,7 @@ export default function PlaceOrderScreen() {
                           <span className="badge badge-primary rounded-pill d-inline">Impuesto. :*</span>
                         </div>
                         <div className="ms-auto">
-                          <span class="badge badge-success rounded-pill d-inline">$ {taxPrice} - COP</span>
+                          <span className="badge badge-success rounded-pill d-inline">$ {taxPrice} - COP</span>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />
@@ -236,7 +236,7 @@ export default function PlaceOrderScreen() {
                           <span className="badge badge-primary rounded-pill d-inline">Envío. :*</span>
                         </div>
                         <div className="ms-auto">
-                          <span class="badge badge-success rounded-pill d-inline">$ {shippingPrice} - COP</span>
+                          <span className="badge badge-success rounded-pill d-inline">$ {shippingPrice} - COP</span>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />
@@ -245,7 +245,7 @@ export default function PlaceOrderScreen() {
                           <b><span className="badge badge-primary rounded-pill d-inline">Total. :*</span></b>
                         </div>
                         <div className="ms-auto">
-                          <b className="text-success"><span class="badge badge-success rounded-pill d-inline">$ {totalPrice} - COP</span></b>
+                          <b className="text-success"><span className="badge badge-success rounded-pill d-inline">$ {totalPrice} - COP</span></b>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />

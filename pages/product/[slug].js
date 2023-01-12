@@ -230,7 +230,7 @@ export default function ProductScreen(props) {
                             </MDBBadge>
                           </h4>
                         </div>
-                        <h6 class="text-secondary">
+                        <h6 className="text-secondary">
                           <span className='pd-quantityNumber badge badge-secondary mb-2' style={{ fontSize: "15px" }}>
                             {product.countInStock > 0 ? 'EN STOCK.' : 'AGOTADO.'}
                           </span>
@@ -405,8 +405,8 @@ export default function ProductScreen(props) {
                           <label htmlFor="star">
                             <i className="fa-solid fa-star"></i> Clasificación. <span className="required">:*</span>
                           </label>
-                          <div class="col-12 mb-4 pb-2">
-                            <select class="select col-auto">
+                          <div className="col-12 mb-4 pb-2">
+                            <select className="select col-auto">
                               <option selected value="--- Selecciona La Clasificación ---">--- Selecciona La Clasificación ---</option>
                               <option value="1">1 - Estrella.</option>
                               <option value="2">2 - Estrella.</option>

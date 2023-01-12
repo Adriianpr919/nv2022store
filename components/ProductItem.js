@@ -82,7 +82,7 @@ export default function ProductItem({ product, addToCartHandler }) {
                           </MDBBadge>
                         </h4>
                       </div>
-                      <h6 class="text-secondary">
+                      <h6 className="text-secondary">
                         <span className='pd-quantityNumber badge badge-secondary mb-2' style={{ fontSize: "15px" }}>
                           {product.countInStock > 0 ? 'EN STOCK.' : 'AGOTADO.'}
                         </span>
