@@ -75,7 +75,6 @@ function CartScreen() {
                               Carrito De Compras.
                             </MDBTypography>
                           </div>
-
                           <hr className="my-4" />
                           {cartItems.map((item) => (
                             <MDBRow className="mb-4 d-flex justify-content-between align-items-center" key={item.slug}>
@@ -130,7 +129,10 @@ function CartScreen() {
                               </MDBCol>
                               <MDBCol md="3" lg="2" xl="2" className="text-end">
                                 <MDBTypography tag="h6" style={{ color: "green", fontSize: "15px" }} className="mb-0 badge badge-success">
-                                  ${(item.price).toFixed(3)} - COP
+                                  &#36; {(item.price).toLocaleString('es-ES', {
+                                    style: 'currency',
+                                    currency: 'COP',
+                                  })}
                                 </MDBTypography>
                               </MDBCol>
                               <MDBCol md="1" lg="1" xl="1" className="text-end">
@@ -160,7 +162,10 @@ function CartScreen() {
                               </span>
                             </MDBTypography>
                             <MDBTypography tag="h5" style={{ color: "green", fontSize: "15px" }} className="badge badge-success mb-2">
-                              $ {(cartItems.reduce((a, c) => a + c.quantity * c.price, 0))?.toFixed(3)} - COP
+                              &#36; {(cartItems.reduce((a, c) => a + c.quantity * c.price, 0)).toLocaleString('es-ES', {
+                                style: 'currency',
+                                currency: 'COP',
+                              })}
                             </MDBTypography>
                           </div>
                           <MDBBtn

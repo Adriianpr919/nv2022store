@@ -15,15 +15,15 @@ export default function PlaceOrderScreen() {
   const { cart } = state;
   const { cartItems, shippingAddress, paymentMethod } = cart;
 
-  const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
+  const round3 = (num) => Math.round(num * 1000 + Number.EPSILON) / 1000;
 
-  const itemsPrice = round2(
+  const itemsPrice = round3(
     cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
-  ); // 123.4567 => 123.46
+  ); // 123.4567 => 123.456,789
 
   const shippingPrice = itemsPrice > 200 ? 0 : 19;
-  const taxPrice = round2(itemsPrice * 0.19); //19% tax in Colombia.
-  const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
+  const taxPrice = round3(itemsPrice * 0.19); //19% tax in Colombia.
+  const totalPrice = round3(itemsPrice + shippingPrice + taxPrice);
 
   const router = useRouter();
   useEffect(() => {
@@ -204,10 +204,20 @@ export default function PlaceOrderScreen() {
                                     <span className="badge badge-warning rounded-pill d-inline">{item.quantity}</span>
                                   </td>
                                   <td className="p-5 text-right">
-                                    <span className="badge badge-success rounded-pill d-inline">$ {(item.price).toFixed(3)} - COP</span>
+                                    <span className="badge badge-success rounded-pill d-inline">
+                                      &#36; {(item.price).toLocaleString('es-ES', {
+                                        style: 'currency',
+                                        currency: 'COP',
+                                      })}
+                                    </span>
                                   </td>
                                   <td className="p-5 text-right">
-                                    <span className="badge badge-success rounded-pill d-inline">$ {(item.quantity * item.price).toFixed(3)} - COP</span>
+                                    <span className="badge badge-success rounded-pill d-inline">
+                                      &#36; {(item.quantity * item.price).toLocaleString('es-ES', {
+                                        style: 'currency',
+                                        currency: 'COP',
+                                      })}
+                                    </span>
                                   </td>
                                 </tr>
                               ))}
@@ -235,7 +245,12 @@ export default function PlaceOrderScreen() {
                           <span className="badge badge-primary rounded-pill d-inline">Elementos. :*</span>
                         </div>
                         <div className="ms-auto">
-                          <span className="badge badge-success rounded-pill d-inline">$ {(itemsPrice)?.toFixed(3)} - COP</span>
+                          <span className="badge badge-success rounded-pill d-inline">
+                            &#36; {(itemsPrice).toLocaleString('es-ES', {
+                              style: 'currency',
+                              currency: 'COP',
+                            })}
+                          </span>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />
@@ -244,7 +259,12 @@ export default function PlaceOrderScreen() {
                           <span className="badge badge-primary rounded-pill d-inline">Impuesto. :*</span>
                         </div>
                         <div className="ms-auto">
-                          <span className="badge badge-success rounded-pill d-inline">$ {(taxPrice)?.toFixed(3)} - COP</span>
+                          <span className="badge badge-success rounded-pill d-inline">
+                            &#36; {(taxPrice).toLocaleString('es-ES', {
+                              style: 'currency',
+                              currency: 'COP',
+                            })}
+                          </span>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />
@@ -253,7 +273,12 @@ export default function PlaceOrderScreen() {
                           <span className="badge badge-primary rounded-pill d-inline">Envío. :*</span>
                         </div>
                         <div className="ms-auto">
-                          <span className="badge badge-success rounded-pill d-inline">$ {(shippingPrice)?.toFixed(3)} - COP</span>
+                          <span className="badge badge-success rounded-pill d-inline">
+                            &#36; {(shippingPrice).toLocaleString('es-ES', {
+                              style: 'currency',
+                              currency: 'COP',
+                            })}
+                          </span>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />
@@ -262,7 +287,14 @@ export default function PlaceOrderScreen() {
                           <b><span className="badge badge-primary rounded-pill d-inline">Total. :*</span></b>
                         </div>
                         <div className="ms-auto">
-                          <b className="text-success"><span className="badge badge-success rounded-pill d-inline">$ {(totalPrice)?.toFixed(3)} - COP</span></b>
+                          <b className="text-success">
+                            <span className="badge badge-success rounded-pill d-inline">
+                              &#36; {(totalPrice).toLocaleString('es-ES', {
+                                style: 'currency',
+                                currency: 'COP',
+                              })}
+                            </span>
+                          </b>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />
