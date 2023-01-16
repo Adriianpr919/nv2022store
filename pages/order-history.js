@@ -55,6 +55,10 @@ function OrderHistoryScreen() {
                   <tr>
                     <th className="p-5 text-left">ID</th>
                     <th className="p-5 text-left">FECHA</th>
+                    <th className="p-5 text-left">ARTÍCULO</th>
+                    <th className="p-5 text-left">TALLA</th>
+                    <th className="p-5 text-left">C. DE ORO</th>
+                    <th className="p-5 text-left">C. DE PIEDRA</th>
                     <th className="p-5 text-left">TOTAL</th>
                     <th className="p-5 text-left">PAGADO</th>
                     <th className="p-5 text-left">ENTREGADO</th>
@@ -79,8 +83,28 @@ function OrderHistoryScreen() {
                         </p>
                       </td>
                       <td>
+                        <p className="fw-normal mb-1">
+                          {order.name}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="fw-normal mb-1">
+                          {order.size}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="fw-normal mb-1">
+                          {order.colorOne}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="fw-normal mb-1">
+                          {order.colorTwo}
+                        </p>
+                      </td>
+                      <td>
                         <span className="badge badge-success rounded-pill d-inline">
-                          $ {order.totalPrice} - COP
+                          $ {(order.totalPrice)?.toFixed(3)} - COP
                         </span>
                       </td>
                       <td>

@@ -2,7 +2,7 @@
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../../components/Layout';
 import Product from '../../models/Product';
@@ -13,12 +13,16 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import {
-  MDBRadio,
-  MDBIcon, MDBBadge, MDBInput, MDBBtn
+  MDBIcon, MDBBadge, MDBInput, MDBBtn, MDBCarousel,
+  MDBCarouselItem
 } from 'mdb-react-ui-kit';
 
 export default function ProductScreen(props) {
   const { product } = props;
+  const [selectedImg, setSelectedImg] = useState('');
+  const [size, setSize] = useState('');
+  const [colorOne, setColorOne] = useState('');
+  const [colorTwo, setColorTwo] = useState('');
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
   if (!product) {
@@ -33,7 +37,7 @@ export default function ProductScreen(props) {
       return toast.error('¡.Perdón.! El Producto Está Agotado.');
     }
 
-    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity, size, colorOne, colorTwo } });
     router.push('/cart');
   };
   return (
@@ -60,15 +64,72 @@ export default function ProductScreen(props) {
                     <div className="row">
                       <div className="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                         <div className="bg-image hover-zoom ripple rounded ripple-surface">
-                          <>
-                            <img
-                              src={product.image}
+                          <MDBCarousel showControls>
+                            <MDBCarouselItem
+                              className='w-100 img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail shadow-md card-img-top'
+                              itemId={1}
+                              src={selectedImg || `../${product.image}`}
                               alt={product.name}
                               title={product.name}
-                              className="w-100 img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail shadow-md card-img-top"
                               layout="responsive"
                             />
-                          </>
+                            <MDBCarouselItem
+                              className='w-100 img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail shadow-md card-img-top'
+                              itemId={2}
+                              src={`../${product.imageOne}`} onClick={() => setSelectedImg(`../${product.imageOne}`)}
+                              alt={product.name}
+                              title={product.name}
+                              layout="responsive"
+                            />
+                            <MDBCarouselItem
+                              className='w-100 img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail shadow-md card-img-top'
+                              itemId={3}
+                              src={`../${product.imageTwo}`} onClick={() => setSelectedImg(`../${product.imageTwo}`)}
+                              alt={product.name}
+                              title={product.name}
+                              layout="responsive"
+                            />
+                            <MDBCarouselItem
+                              className='w-100 img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail shadow-md card-img-top'
+                              itemId={4}
+                              src={`../${product.imageThree}`} onClick={() => setSelectedImg(`../${product.imageThree}`)}
+                              alt={product.name}
+                              title={product.name}
+                              layout="responsive"
+                            />
+                            <MDBCarouselItem
+                              className='w-100 img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail shadow-md card-img-top'
+                              itemId={5}
+                              src={`../${product.imageFour}`} onClick={() => setSelectedImg(`../${product.imageFour}`)}
+                              alt={product.name}
+                              title={product.name}
+                              layout="responsive"
+                            />
+                            <MDBCarouselItem
+                              className='w-100 img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail shadow-md card-img-top'
+                              itemId={6}
+                              src={`../${product.imageFive}`} onClick={() => setSelectedImg(`../${product.imageFive}`)}
+                              alt={product.name}
+                              title={product.name}
+                              layout="responsive"
+                            />
+                            <MDBCarouselItem
+                              className='w-100 img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail shadow-md card-img-top'
+                              itemId={7}
+                              src={`../${product.imageSix}`} onClick={() => setSelectedImg(`../${product.imageSix}`)}
+                              alt={product.name}
+                              title={product.name}
+                              layout="responsive"
+                            />
+                            <MDBCarouselItem
+                              className='w-100 img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail shadow-md card-img-top'
+                              itemId={8}
+                              src={`../${product.imageSeven}`} onClick={() => setSelectedImg(`../${product.imageSeven}`)}
+                              alt={product.name}
+                              title={product.name}
+                              layout="responsive"
+                            />
+                          </MDBCarousel>
                         </div>
                       </div>
                       <div className="col-md-6 col-lg-6 col-xl-6">
@@ -106,115 +167,77 @@ export default function ProductScreen(props) {
                             </MDBBadge>
                           </span>
                         </div>
-                        <p className="text-truncate mb-4 mb-md-0">
+                        <p className="card-text">
                           <hr />
-                          <section className="color mb-2">
-                            <div className="mt-5 mb-2">
-                              <p className="grey-text">
-                                <MDBBadge color='primary' pill style={{ fontSize: "15px" }}>
-                                  Selecciona La Talla. :*
-                                </MDBBadge>
-                              </p>
-                              <div className="row text-center text-md-left">
-                                <div className="col-md-4 col-12 ">
-                                  {/* Radio group */}
-                                  <div className="form-group">
-                                    <MDBRadio name='flexRadioDefault1' id='flexRadioDefault1' label='Default radio' />
-                                    <input className="form-check-input" name="group100" type="radio" id="radio100" defaultChecked="checked" />
-                                    <label htmlFor="radio100" className="form-check-label dark-grey-text">White</label>
-                                  </div>
-                                </div>
-                                <div className="col-md-4">
-                                  {/* Radio group */}
-                                  <div className="form-group">
-                                    <MDBRadio name='flexRadioDefault2' id='flexRadioDefault2' label='Default radio' />
-                                    <input className="form-check-input" name="group100" type="radio" id="radio101" />
-                                    <label htmlFor="radio101" className="form-check-label dark-grey-text">Silver</label>
-                                  </div>
-                                </div>
-                                <div className="col-md-4">
-                                  {/* Radio group */}
-                                  <div className="form-group">
-                                    <MDBRadio name='flexRadioDefault3' id='flexRadioDefault3' label='Default radio' />
-                                    <input className="form-check-input" name="group100" type="radio" id="radio102" />
-                                    <label htmlFor="radio102" className="form-check-label dark-grey-text">Gold</label>
-                                  </div>
+                          <div className="pd-group">
+                            <div className="pd-otherAction">
+                              <div className="pd-size" style={{ textAlign: "justify" }}>
+                                <p className="grey-text">
+                                  <MDBBadge color='primary' pill style={{ fontSize: "15px" }} className="pd-sizeTitle">
+                                    Selecciona La Talla. :*
+                                  </MDBBadge>
+                                </p>
+                                <div className="pd-sizeDiv">
+                                  {
+                                    product.sizes?.map((size) => (
+                                      <>
+                                        <input type="radio" onChange={(e) => setSize(e.target.value)} id={size.title} name="size" value={size.title} required />
+                                        <label htmlFor={size.title}>{size.title}</label>
+                                      </>
+                                    ))
+                                  }
                                 </div>
                               </div>
                             </div>
-                          </section>
-                          <section className="color mb-2">
-                            <div className="mt-5 mb-2">
-                              <p className="grey-text">
-                                <MDBBadge color='primary' pill style={{ fontSize: "15px" }}>
-                                  Selecciona El Color De Oro. :*
-                                </MDBBadge>
-                              </p>
-                              <div className="row text-center text-md-left">
-                                <div className="col-md-4 col-12 ">
-                                  {/* Radio group */}
-                                  <div className="form-group">
-                                    <MDBRadio name='flexRadioDefault4' id='flexRadioDefault4' label='Default radio' />
-                                    <input className="form-check-input" name="group100" type="radio" id="radio100" defaultChecked="checked" />
-                                    <label htmlFor="radio100" className="form-check-label dark-grey-text">White</label>
-                                  </div>
-                                </div>
-                                <div className="col-md-4">
-                                  {/* Radio group */}
-                                  <div className="form-group">
-                                    <MDBRadio name='flexRadioDefault5' id='flexRadioDefault5' label='Default radio' />
-                                    <input className="form-check-input" name="group100" type="radio" id="radio101" />
-                                    <label htmlFor="radio101" className="form-check-label dark-grey-text">Silver</label>
-                                  </div>
-                                </div>
-                                <div className="col-md-4">
-                                  {/* Radio group */}
-                                  <div className="form-group">
-                                    <MDBRadio name='flexRadioDefault6' id='flexRadioDefault6' label='Default radio' />
-                                    <input className="form-check-input" name="group100" type="radio" id="radio102" />
-                                    <label htmlFor="radio102" className="form-check-label dark-grey-text">Gold</label>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </section>
-                          <section className="color mb-2">
-                            <div className="mt-5 mb-2">
-                              <p className="grey-text">
-                                <MDBBadge color='primary' pill style={{ fontSize: "15px" }}>
-                                  Selecciona El Color De Piedra. :*
-                                </MDBBadge>
-                              </p>
-                              <div className="row text-center text-md-left">
-                                <div className="col-md-4 col-12 ">
-                                  {/* Radio group */}
-                                  <div className="form-group">
-                                    <MDBRadio name='flexRadioDefault7' id='flexRadioDefault7' label='Default radio' />
-                                    <input className="form-check-input" name="group100" type="radio" id="radio100" defaultChecked="checked" />
-                                    <label htmlFor="radio100" className="form-check-label dark-grey-text">White</label>
-                                  </div>
-                                </div>
-                                <div className="col-md-4">
-                                  {/* Radio group */}
-                                  <div className="form-group">
-                                    <MDBRadio name='flexRadioDefault8' id='flexRadioDefault8' label='Default radio' />
-                                    <input className="form-check-input" name="group100" type="radio" id="radio101" />
-                                    <label htmlFor="radio101" className="form-check-label dark-grey-text">Silver</label>
-                                  </div>
-                                </div>
-                                <div className="col-md-4">
-                                  {/* Radio group */}
-                                  <div className="form-group">
-                                    <MDBRadio name='flexRadioDefault9' id='flexRadioDefault9' label='Default radio' />
-                                    <input className="form-check-input" name="group100" type="radio" id="radio102" />
-                                    <label htmlFor="radio102" className="form-check-label dark-grey-text">Gold</label>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </section>
+                          </div>
                           <hr />
+                          <div className="pd-group">
+                            <div className="pd-otherAction">
+                              <div className="pd-color" style={{ textAlign: "justify" }}>
+                                <p className="grey-text">
+                                  <MDBBadge color='primary' pill style={{ fontSize: "15px" }} className="pd-sizeTitle">
+                                    Selecciona El Color De Oro. :*
+                                  </MDBBadge>
+                                </p>
+                                <div className="pd-sizeDiv">
+                                  {
+                                    product.colorsOne?.map((colorOne) => (
+                                      <>
+                                        <input type="radio" onChange={(e) => setColorOne(e.target.value)} id={colorOne.title} name="colorOne" value={colorOne.title} required />
+                                        <label htmlFor={colorOne.title}>{colorOne.title}</label>
+                                      </>
+                                    ))
+                                  }
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </p>
+                        <hr />
+                        <p className="card-text">
+                          <div className="pd-group">
+                            <div className="pd-otherAction">
+                              <div className="pd-color" style={{ textAlign: "justify" }}>
+                                <p className="grey-text">
+                                  <MDBBadge color='primary' pill style={{ fontSize: "15px" }} className="pd-sizeTitle">
+                                    Selecciona El Color De Piedra. :*
+                                  </MDBBadge>
+                                </p>
+                                <div className="pd-sizeDiv">
+                                  {
+                                    product.colorsTwo?.map((colorTwo) => (
+                                      <>
+                                        <input type="radio" onChange={(e) => setColorTwo(e.target.value)} id={colorTwo.title} name="colorTwo" value={colorTwo.title} required />
+                                        <label htmlFor={colorTwo.title}>{colorTwo.title}</label>
+                                      </>
+                                    ))
+                                  }
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </p>
+                        <hr />
                         <p className="text-truncate mb-4 mb-md-0">
                           <MDBBadge color='primary' pill style={{ fontSize: "15px" }}>
                             Descripción. :*
@@ -226,7 +249,7 @@ export default function ProductScreen(props) {
                         <div className="d-flex flex-row align-items-center mb-1">
                           <h4 className="mb-1 me-1">
                             <MDBBadge color='success' pill>
-                              $ {product.price} - COP
+                              $ {(product.price)?.toFixed(3)} - COP
                             </MDBBadge>
                           </h4>
                         </div>

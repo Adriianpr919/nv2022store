@@ -150,6 +150,12 @@ export default function PlaceOrderScreen() {
                                   <span className="badge badge-primary rounded-pill d-inline">ARTÍCULO</span>
                                 </th>
                                 <th className="    p-5 text-right">
+                                  <span className="badge badge-primary rounded-pill d-inline">TALLA</span>
+                                </th>
+                                <th className="    p-5 text-right">
+                                  <span className="badge badge-primary rounded-pill d-inline">C. DE ORO Y C. DE PIEDRA</span>
+                                </th>
+                                <th className="    p-5 text-right">
                                   <span className="badge badge-primary rounded-pill d-inline">CANTIDAD</span>
                                 </th>
                                 <th className="  p-5 text-right">
@@ -184,13 +190,24 @@ export default function PlaceOrderScreen() {
                                     </Link>
                                   </td>
                                   <td className=" p-5 text-right">
+                                    <span className="badge badge-secondary rounded-pill d-inline">{item.size}</span>
+                                  </td>
+                                  <td className=" p-5 text-right">
+                                    <p classname="fw-normal mb-1">
+                                      <span className="badge badge-secondary rounded-pill d-inline">{item.colorOne}</span>
+                                    </p>
+                                    <p classname="text-muted mb-0">
+                                      <span className="badge badge-secondary rounded-pill d-inline">{item.colorTwo}</span>
+                                    </p>
+                                  </td>
+                                  <td className=" p-5 text-right">
                                     <span className="badge badge-warning rounded-pill d-inline">{item.quantity}</span>
                                   </td>
                                   <td className="p-5 text-right">
-                                    <span className="badge badge-success rounded-pill d-inline">$ {item.price} - COP</span>
+                                    <span className="badge badge-success rounded-pill d-inline">$ {(item.price).toFixed(3)} - COP</span>
                                   </td>
                                   <td className="p-5 text-right">
-                                    <span className="badge badge-success rounded-pill d-inline">$ {item.quantity * item.price} - COP</span>
+                                    <span className="badge badge-success rounded-pill d-inline">$ {(item.quantity * item.price).toFixed(3)} - COP</span>
                                   </td>
                                 </tr>
                               ))}
@@ -218,7 +235,7 @@ export default function PlaceOrderScreen() {
                           <span className="badge badge-primary rounded-pill d-inline">Elementos. :*</span>
                         </div>
                         <div className="ms-auto">
-                          <span className="badge badge-success rounded-pill d-inline">$ {itemsPrice} - COP</span>
+                          <span className="badge badge-success rounded-pill d-inline">$ {(itemsPrice)?.toFixed(3)} - COP</span>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />
@@ -227,7 +244,7 @@ export default function PlaceOrderScreen() {
                           <span className="badge badge-primary rounded-pill d-inline">Impuesto. :*</span>
                         </div>
                         <div className="ms-auto">
-                          <span className="badge badge-success rounded-pill d-inline">$ {taxPrice} - COP</span>
+                          <span className="badge badge-success rounded-pill d-inline">$ {(taxPrice)?.toFixed(3)} - COP</span>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />
@@ -236,7 +253,7 @@ export default function PlaceOrderScreen() {
                           <span className="badge badge-primary rounded-pill d-inline">Envío. :*</span>
                         </div>
                         <div className="ms-auto">
-                          <span className="badge badge-success rounded-pill d-inline">$ {shippingPrice} - COP</span>
+                          <span className="badge badge-success rounded-pill d-inline">$ {(shippingPrice)?.toFixed(3)} - COP</span>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />
@@ -245,7 +262,7 @@ export default function PlaceOrderScreen() {
                           <b><span className="badge badge-primary rounded-pill d-inline">Total. :*</span></b>
                         </div>
                         <div className="ms-auto">
-                          <b className="text-success"><span className="badge badge-success rounded-pill d-inline">$ {totalPrice} - COP</span></b>
+                          <b className="text-success"><span className="badge badge-success rounded-pill d-inline">$ {(totalPrice)?.toFixed(3)} - COP</span></b>
                         </div>
                       </div>
                       <div className="border-top px-2 mx-2" />

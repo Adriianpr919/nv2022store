@@ -99,6 +99,15 @@ function CartScreen() {
                                 <MDBTypography tag="h6" style={{ fontSize: "15px" }} className="text-black mb-0 badge badge-secondary">
                                   {item.brand}
                                 </MDBTypography>
+                                <MDBTypography tag="h6" style={{ fontSize: "15px" }} className="text-black mb-0 badge badge-secondary">
+                                  {item.size}
+                                </MDBTypography>
+                                <MDBTypography tag="h6" style={{ fontSize: "15px" }} className="text-black mb-0 badge badge-secondary">
+                                  {item.colorOne}
+                                </MDBTypography>
+                                <MDBTypography tag="h6" style={{ fontSize: "15px" }} className="text-black mb-0 badge badge-secondary">
+                                  {item.colorTwo}
+                                </MDBTypography>
                               </MDBCol>
                               <MDBCol md="3" lg="2" xl="2" className="text-end">
                                 <MDBTypography tag="h6" style={{ fontSize: "15px" }} className="mb-0 badge badge-secondary">
@@ -121,7 +130,7 @@ function CartScreen() {
                               </MDBCol>
                               <MDBCol md="3" lg="2" xl="2" className="text-end">
                                 <MDBTypography tag="h6" style={{ color: "green", fontSize: "15px" }} className="mb-0 badge badge-success">
-                                  ${item.price} - COP
+                                  ${(item.price).toFixed(3)} - COP
                                 </MDBTypography>
                               </MDBCol>
                               <MDBCol md="1" lg="1" xl="1" className="text-end">
@@ -151,7 +160,7 @@ function CartScreen() {
                               </span>
                             </MDBTypography>
                             <MDBTypography tag="h5" style={{ color: "green", fontSize: "15px" }} className="badge badge-success mb-2">
-                              $ {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)} - COP
+                              $ {(cartItems.reduce((a, c) => a + c.quantity * c.price, 0))?.toFixed(3)} - COP
                             </MDBTypography>
                           </div>
                           <MDBBtn

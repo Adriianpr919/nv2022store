@@ -78,7 +78,7 @@ export default function ProductItem({ product, addToCartHandler }) {
                       <div className="d-flex flex-row align-items-center mb-1">
                         <h4 className="mb-1 me-1">
                           <MDBBadge color='success' pill>
-                            $ {product.price} - COP
+                            $ {(product.price).toFixed(3)} - COP
                           </MDBBadge>
                         </h4>
                       </div>
