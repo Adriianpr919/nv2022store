@@ -213,6 +213,12 @@ function OrderScreen() {
                                       <span className="badge badge-primary rounded-pill d-inline">ARTÍCULO</span>
                                     </th>
                                     <th className="    p-5 text-right">
+                                      <span className="badge badge-primary rounded-pill d-inline">TALLA</span>
+                                    </th>
+                                    <th className="    p-5 text-right">
+                                      <span className="badge badge-primary rounded-pill d-inline">C. DE ORO Y C. DE PIEDRA</span>
+                                    </th>
+                                    <th className="    p-5 text-right">
                                       <span className="badge badge-primary rounded-pill d-inline">CANTIDAD</span>
                                     </th>
                                     <th className="  p-5 text-right">
@@ -245,6 +251,17 @@ function OrderScreen() {
                                             </a>
                                           </div>
                                         </Link>
+                                      </td>
+                                      <td className=" p-5 text-right">
+                                        <span className="badge badge-secondary rounded-pill d-inline">{item.size}</span>
+                                      </td>
+                                      <td className=" p-5 text-right">
+                                        <p classname="fw-normal mb-1">
+                                          <span className="badge badge-secondary rounded-pill d-inline">{item.colorOne}</span>
+                                        </p>
+                                        <p classname="text-muted mb-0">
+                                          <span className="badge badge-secondary rounded-pill d-inline">{item.colorTwo}</span>
+                                        </p>
                                       </td>
                                       <td className=" p-5 text-right">
                                         <span className="badge badge-warning rounded-pill d-inline">{item.quantity}</span>
