@@ -146,7 +146,6 @@ export default function ProductScreen(props) {
                               <i className="fa fa-star" />
                               <i className="fa fa-star" />
                               <i className="fa fa-star" />
-                              <i className="fa fa-star" />
                             </div>
                           </span>
                         </div>
@@ -301,7 +300,7 @@ export default function ProductScreen(props) {
                               {/* Content column */}
                               <div className="col-sm-10 col-12">
                                 <a>
-                                  <h5 className="user-name font-weight-bold">John Doe</h5>
+                                  <h5 className="user-name font-weight-bold">John Perez</h5>
                                 </a>
                                 {/* Rating */}
                                 <ul className="list-unstyled d-flex mb-0">
@@ -324,13 +323,12 @@ export default function ProductScreen(props) {
                                 <div className="card-data">
                                   <ul className="list-unstyled mb-1">
                                     <li className="comment-date font-small grey-text">
-                                      <i className="far fa-clock-o" /> 05/10/2015</li>
+                                      <i className="far fa-clock-o" /> 05/10/2021</li>
                                   </ul>
                                 </div>
-                                <p className="dark-grey-text article">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                  aliquip ex ea commodo
-                                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                  nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                                <p className="dark-grey-text article">
+                                  Excelente Producto.
+                                </p>
                               </div>
                               {/* Content column */}
                             </div>
@@ -340,7 +338,7 @@ export default function ProductScreen(props) {
                               {/* Content column */}
                               <div className="col-sm-10 col-12">
                                 <a>
-                                  <h5 className="user-name font-weight-bold">Lily Brown</h5>
+                                  <h5 className="user-name font-weight-bold">Lily Del Piral</h5>
                                 </a>
                                 {/* Rating */}
                                 <ul className="list-unstyled d-flex mb-0">
@@ -363,13 +361,12 @@ export default function ProductScreen(props) {
                                 <div className="card-data">
                                   <ul className="list-unstyled mb-1">
                                     <li className="comment-date font-small grey-text">
-                                      <i className="far fa-clock-o" /> 05/10/2015</li>
+                                      <i className="far fa-clock-o" /> 05/10/2020</li>
                                   </ul>
                                 </div>
-                                <p className="dark-grey-text article">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                  aliquip ex ea commodo
-                                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                  nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                                <p className="dark-grey-text article">
+                                  Que Precioso..
+                                </p>
                               </div>
                               {/* Content column */}
                             </div>
@@ -379,7 +376,7 @@ export default function ProductScreen(props) {
                               {/* Content column */}
                               <div className="col-sm-10 col-12">
                                 <a>
-                                  <h5 className="user-name font-weight-bold">Martha Smith</h5>
+                                  <h5 className="user-name font-weight-bold">Martha Rivera</h5>
                                 </a>
                                 {/* Rating */}
                                 <ul className="list-unstyled d-flex mb-0">
@@ -402,13 +399,12 @@ export default function ProductScreen(props) {
                                 <div className="card-data">
                                   <ul className="list-unstyled mb-1">
                                     <li className="comment-date font-small grey-text">
-                                      <i className="far fa-clock-o" /> 05/10/2015</li>
+                                      <i className="far fa-clock-o" /> 05/10/2022</li>
                                   </ul>
                                 </div>
-                                <p className="dark-grey-text article">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                  aliquip ex ea commodo
-                                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                  nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                                <p className="dark-grey-text article">
+                                  Lindo recomendada.
+                                </p>
                               </div>
                               {/* Content column */}
                             </div>
