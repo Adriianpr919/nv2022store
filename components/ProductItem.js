@@ -86,9 +86,6 @@ export default function ProductItem({ product, addToCartHandler }) {
                         <span className='pd-quantityNumber badge badge-secondary mb-2' style={{ fontSize: "15px" }}>
                           {product.countInStock > 0 ? 'EN STOCK.' : 'AGOTADO.'}
                         </span>
-                        <p className="lead text-justify" style={{ textAlign: "justify", color: "red" }}>
-                          La combinación de presas serán despachadas según la disponibilidad de nuestros Nury Valenzuela Agradecemos su comprensión.
-                        </p>
                       </h6>
                       <div className="d-flex flex-column mt-4">
                         <Link href={`/product/${product.slug}`} className="btn btn-secondary btn-sm">
