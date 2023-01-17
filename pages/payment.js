@@ -47,7 +47,7 @@ export default function PaymentScreen() {
         <div className="card-body">
           <form className="p-4 p-md-5 border rounded-3 bg-light" onSubmit={submitHandler}>
             <h1 className="mb-4 text-xl">Método De Pago.</h1>
-            {['PayPal', 'Stripe', 'ContraReembolso'].map((payment) => (
+            {['PayPal'].map((payment) => (
               <div key={payment} className="mb-4">
                 <input
                   name="paymentMethod"
