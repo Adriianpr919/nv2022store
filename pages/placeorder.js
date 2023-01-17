@@ -15,15 +15,15 @@ export default function PlaceOrderScreen() {
   const { cart } = state;
   const { cartItems, shippingAddress, paymentMethod } = cart;
 
-  const round3 = (num) => Math.round(num * 1000 + Number.EPSILON) / 1000;
+  const round2 = (num) => Math.round(num * 1000 + Number.EPSILON) / 1000;
 
-  const itemsPrice = round3(
+  const itemsPrice = round2(
     cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
   ); // 123.4567 => 123.456,789
 
   const shippingPrice = itemsPrice > 200 ? 0 : 19;
-  const taxPrice = round3(itemsPrice * 0.19); //19% tax in Colombia.
-  const totalPrice = round3(itemsPrice + shippingPrice + taxPrice);
+  const taxPrice = round2(itemsPrice * 0.19); //19% tax in Colombia.
+  const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
 
   const router = useRouter();
   useEffect(() => {
