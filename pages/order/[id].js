@@ -439,7 +439,7 @@ function OrderScreen() {
                                   )}
                                   <div>
                                     {session.user.isAdmin && order.isPaid && !order.isDelivered && (
-                                      <>
+                                      <div>
                                         {loadingDeliver && <MDBSpinner className='me-2' style={{ width: '3rem', height: '3rem' }} role='status'>
                                           <span className='visually-hidden'>Cargando.</span>
                                         </MDBSpinner>}
@@ -449,7 +449,7 @@ function OrderScreen() {
                                         >
                                           <i className="fa-solid fa-truck"></i> Entregar Pedido.
                                         </button>
-                                      </>
+                                      </div>
                                     )}
                                   </div>
                                 </div>
