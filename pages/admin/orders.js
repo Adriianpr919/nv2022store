@@ -45,16 +45,16 @@ export default function AdminOrderScreen() {
         <div>
           <ul>
             <li>
-              <Link href="/admin/dashboard">
+              <Link href="/admin/dashboard" className="mt-1 mb-2 text-muted small">
                 <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
                   <i className="fa-solid fa-sliders"></i> Tablero.
                 </MDBBadge>
               </Link>
             </li>
             <li>
-              <Link href="/admin/orders">
+              <Link href="/admin/orders" className="mt-1 mb-2 text-muted small">
                 <div>
-                  <a className="font-bold">
+                  <a className="font-bold mt-1 mb-2 text-muted small">
                     <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
                       <i className="fa-solid fa-truck-fast"></i> Mis Pedidos.
                     </MDBBadge>
@@ -63,14 +63,14 @@ export default function AdminOrderScreen() {
               </Link>
             </li>
             <li>
-              <Link href="/admin/products">
+              <Link href="/admin/products" className="mt-1 mb-2 text-muted small">
                 <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
                   <MDBIcon fas icon="shopping-bag" /> Productos.
                 </MDBBadge>
               </Link>
             </li>
             <li>
-              <Link href="/admin/users">
+              <Link href="/admin/users" className="mt-1 mb-2 text-muted small">
                 <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
                   <i className="fa-solid fa-users"></i> Usuarios.
                 </MDBBadge>
