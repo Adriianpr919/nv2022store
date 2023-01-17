@@ -162,11 +162,15 @@ export default function Layout({ title, children }) {
                       <MDBDropdownItem link href="/order-history" id={DropdownLink}>
                         <i className="fa-solid fa-truck-fast"></i> Historial De Pedidos.
                       </MDBDropdownItem>
-                      {session.user.isAdmin && (
-                        <MDBDropdownItem link href="/admin/dashboard" id={DropdownLink}>
+                      <div>
+                        {session.user.isAdmin && (
+                        <div>
+                          <MDBDropdownItem link href="/admin/dashboard" id={DropdownLink}>
                           <i className="fa-solid fa-user-tie"></i> Panel De Administración.
                         </MDBDropdownItem>
+                        </div>
                       )}
+                      </div>
                       <MDBDropdownItem link href="#" onClick={logoutClickHandler}>
                         <i className="fa-solid fa-power-off"></i> Cerrar Sesión.
                       </MDBDropdownItem>
