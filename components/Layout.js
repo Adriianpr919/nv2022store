@@ -164,12 +164,12 @@ export default function Layout({ title, children }) {
                       </MDBDropdownItem>
                       <div>
                         {session.user.isAdmin && (
-                        <div>
-                          <MDBDropdownItem link href="/admin/dashboard" id={DropdownLink}>
-                          <i className="fa-solid fa-user-tie"></i> Panel De Administración.
-                        </MDBDropdownItem>
-                        </div>
-                      )}
+                          <div>
+                            <MDBDropdownItem link href="/admin/dashboard" id={DropdownLink}>
+                              <i className="fa-solid fa-user-tie"></i> Panel De Administración.
+                            </MDBDropdownItem>
+                          </div>
+                        )}
                       </div>
                       <MDBDropdownItem link href="#" onClick={logoutClickHandler}>
                         <i className="fa-solid fa-power-off"></i> Cerrar Sesión.
@@ -178,16 +178,24 @@ export default function Layout({ title, children }) {
                   </MDBDropdown>
                 ) : (
                   <Link className='mx-3' href="/login" rel="noopener noreferrer">
-                    <MDBIcon fas icon='users' style={{ fontSize: "20px", color: "black" }} size='lg' />
+                    <button type="button" className="btn btn-outline-dark me-3">
+                      <span className="badge rounded-pill bg-secondary" style={{ fontSize: "15px" }}>
+                        <i className="fas fa-users fa-lg" style={{ fontSize: "20px", color: "black" }}></i> Ingresar.
+                      </span>
+                    </button>
                   </Link>
                 )}
                 <Link className='mx-3' href='/cart' rel="noopener noreferrer">
-                  <MDBIcon fas icon='shopping-cart' style={{ fontSize: "20px", color: "black" }} size='lg' />
-                  {cartItemsCount > 0 && (
-                    <MDBBadge color='danger' notification pill className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
-                      {cartItemsCount}
-                    </MDBBadge>
-                  )}
+                  <button type="button" className="btn btn-outline-dark me-3">
+                    <span className="badge rounded-pill bg-secondary" style={{ fontSize: "15px" }}>
+                      <MDBIcon fas icon='shopping-cart' style={{ fontSize: "20px", color: "black" }} size='lg' />
+                      {cartItemsCount > 0 && (
+                        <MDBBadge color='danger' notification pill className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                          {cartItemsCount}
+                        </MDBBadge>
+                      )}
+                    </span>
+                  </button>
                 </Link>
               </MDBCollapse>
             </MDBContainer>
