@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable @next/next/no-img-element */
 import { signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
