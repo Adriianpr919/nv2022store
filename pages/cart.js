@@ -112,7 +112,7 @@ function CartScreen() {
                                 <MDBTypography tag="h6" style={{ fontSize: "15px" }} className="mb-0 badge badge-secondary">
                                   <div className="mb-4 pb-2">
                                     <select
-                                      className="select p-2 rounded bg-grey" style={{ width: "100%" }}
+                                      className="select rounded bg-grey" style={{ width: "100%" }}
                                       value={item.quantity}
                                       onChange={(e) =>
                                         updateCartHandler(item, e.target.value)
