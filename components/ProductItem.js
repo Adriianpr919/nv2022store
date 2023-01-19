@@ -38,18 +38,6 @@ export default function ProductItem({ product, addToCartHandler }) {
                           </h5>
                         </Link>
                       </h5>
-                      <div className="d-flex flex-row">
-                        <span className="badge badge-warning small mb-2" style={{ fontSize: "15px" }}>
-                          {product.rating} De {product.numReviews} Reseñas.
-                          <div className="text-danger mb-1 me-2">
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                          </div>
-                        </span>
-                      </div>
                       <div className="mt-1 mb-2 text-muted small">
                         <span>
                           <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
