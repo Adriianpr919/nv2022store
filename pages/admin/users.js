@@ -5,6 +5,51 @@ import { toast } from 'react-toastify';
 import Layout from '../../components/Layout';
 import { getError } from '../../utils/error';
 import { MDBSpinner, MDBIcon, MDBBtn, MDBBadge } from 'mdb-react-ui-kit';
+import 'semantic-ui-css/semantic.min.css';
+import { Tab } from 'semantic-ui-react';
+
+const panes = [
+  {
+    menuItem: 'Tablero.', render: () => <Tab.Pane>
+      <Link href="/admin/dashboard" className="mt-1 mb-2 text-muted small">
+        <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
+          <i className="fa-solid fa-sliders"></i> Tablero.
+        </MDBBadge>
+      </Link>
+    </Tab.Pane>
+  },
+  {
+    menuItem: 'Mis Pedidos.', render: () => <Tab.Pane>
+      <Link href="/admin/orders" className="mt-1 mb-2 text-muted small">
+        <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
+          <i className="fa-solid fa-truck-fast"></i> Mis Pedidos.
+        </MDBBadge>
+      </Link>
+    </Tab.Pane>
+  },
+  {
+    menuItem: 'Productos.', render: () => <Tab.Pane>
+      <Link href="/admin/products" className="mt-1 mb-2 text-muted small">
+        <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
+          <MDBIcon fas icon="shopping-bag" /> Productos.
+        </MDBBadge>
+      </Link>
+    </Tab.Pane>
+  },
+  {
+    menuItem: 'Usuarios.', render: () => <Tab.Pane>
+      <Link href="/admin/users" className="mt-1 mb-2 text-muted small">
+        <div>
+          <a className="font-bold mt-1 mb-2 text-muted small">
+            <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
+              <i className="fa-solid fa-users"></i> Usuarios.
+            </MDBBadge>
+          </a>
+        </div>
+      </Link>
+    </Tab.Pane>
+  },
+]
 
 function reducer(state, action) {
   switch (action.type) {
@@ -71,44 +116,10 @@ function AdminUsersScreen() {
   return (
     <Layout title="Usuarios De Administración.">
       <hr />
+      <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
+      <hr />
       <div className="grid md:grid-cols-4 md:gap-5">
-        <div>
-          <ul>
-            <li>
-              <Link href="/admin/dashboard" className="mt-1 mb-2 text-muted small">
-                <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
-                  <i className="fa-solid fa-sliders"></i> Tablero.
-                </MDBBadge>
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/orders" className="mt-1 mb-2 text-muted small">
-                <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
-                  <i className="fa-solid fa-truck-fast"></i> Mis Pedidos.
-                </MDBBadge>
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/products" className="mt-1 mb-2 text-muted small">
-                <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
-                  <MDBIcon fas icon="shopping-bag" /> Productos.
-                </MDBBadge>
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/users" className="mt-1 mb-2 text-muted small">
-                <div>
-                  <a className="font-bold mt-1 mb-2 text-muted small">
-                    <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
-                      <i className="fa-solid fa-users"></i> Usuarios.
-                    </MDBBadge>
-                  </a>
-                </div>
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="overflow-x-auto md:col-span-3">
+        <div className="overflow-x-auto md:col-span-12">
           <h1 className="mb-4 text-xl"><i className="fa-solid fa-users"></i> Usuarios De Administración.</h1>
           {loadingDelete && <MDBSpinner className='me-2' color='danger' style={{ width: '3rem', height: '3rem' }} role='status'>
             <span className='visually-hidden'>Borrando.</span>

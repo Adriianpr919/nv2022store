@@ -2,6 +2,51 @@ import axios from 'axios';
 import Link from 'next/link';
 import { Bar } from 'react-chartjs-2';
 import { MDBSpinner, MDBIcon, MDBBadge } from 'mdb-react-ui-kit';
+import 'semantic-ui-css/semantic.min.css';
+import { Tab } from 'semantic-ui-react';
+
+const panes = [
+  {
+    menuItem: 'Tablero.', render: () => <Tab.Pane>
+      <Link href="/admin/dashboard" className="mt-1 mb-2 text-muted small">
+        <div>
+          <a className="font-bold mt-1 mb-2 text-muted small">
+            <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
+              <i className="fa-solid fa-sliders"></i> Tablero.
+            </MDBBadge>
+          </a>
+        </div>
+      </Link>
+    </Tab.Pane>
+  },
+  {
+    menuItem: 'Mis Pedidos.', render: () => <Tab.Pane>
+      <Link href="/admin/orders" className="mt-1 mb-2 text-muted small">
+        <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
+          <i className="fa-solid fa-truck-fast"></i> Mis Pedidos.
+        </MDBBadge>
+      </Link>
+    </Tab.Pane>
+  },
+  {
+    menuItem: 'Productos.', render: () => <Tab.Pane>
+      <Link href="/admin/products" className="mt-1 mb-2 text-muted small">
+        <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
+          <MDBIcon fas icon="shopping-bag" /> Productos.
+        </MDBBadge>
+      </Link>
+    </Tab.Pane>
+  },
+  {
+    menuItem: 'Usuarios.', render: () => <Tab.Pane>
+      <Link href="/admin/users" className="mt-1 mb-2 text-muted small">
+        <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
+          <i className="fa-solid fa-users"></i> Usuarios.
+        </MDBBadge>
+      </Link>
+    </Tab.Pane>
+  },
+]
 
 import {
   Chart as ChartJS,
@@ -80,44 +125,10 @@ function AdminDashboardScreen() {
   return (
     <Layout title="Panel De Administración.">
       <hr />
+      <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
+      <hr />
       <div className="grid  md:grid-cols-4 md:gap-5">
-        <div>
-          <ul>
-            <li>
-              <Link href="/admin/dashboard" className="mt-1 mb-2 text-muted small">
-                <div>
-                  <a className="font-bold mt-1 mb-2 text-muted small">
-                    <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
-                      <i className="fa-solid fa-sliders"></i> Tablero.
-                    </MDBBadge>
-                  </a>
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/orders" className="mt-1 mb-2 text-muted small">
-                <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
-                  <i className="fa-solid fa-truck-fast"></i> Mis Pedidos.
-                </MDBBadge>
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/products" className="mt-1 mb-2 text-muted small">
-                <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
-                  <MDBIcon fas icon="shopping-bag" /> Productos.
-                </MDBBadge>
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/users" className="mt-1 mb-2 text-muted small">
-                <MDBBadge color='secondary' pill style={{ fontSize: "15px" }}>
-                  <i className="fa-solid fa-users"></i> Usuarios.
-                </MDBBadge>
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="md:col-span-3">
+        <div className="md:col-span-12">
           <h1 className="mb-4 text-xl">
             <i className="fa-solid fa-user-tie"></i> Panel De Administración.
           </h1>
