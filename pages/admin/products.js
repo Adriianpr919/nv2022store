@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import 'semantic-ui-css/semantic.min.css';
-import { Table, Tab } from 'semantic-ui-react';
+import { Table, Tab, Button } from 'semantic-ui-react';
 import { MDBBadge, MDBIcon } from 'mdb-react-ui-kit';
 
 const panes = [
@@ -56,6 +56,9 @@ export default function AdminProdcutsScreen() {
       <hr />
       <div className="grid md:grid-cols-4 md:gap-5">
         <div className="overflow-x-auto md:col-span-12">
+          <h1 className="mb-4 text-xl">
+            <MDBIcon fas icon="shopping-bag" /> Mis Productos De Administración.
+          </h1>
           <Table celled>
             <Table.Header>
               <Table.Row>
@@ -81,7 +84,14 @@ export default function AdminProdcutsScreen() {
                 <Table.Cell>----</Table.Cell>
                 <Table.Cell>----</Table.Cell>
                 <Table.Cell>----</Table.Cell>
-                <Table.Cell>----</Table.Cell>
+                <Table.Cell>
+                  <Button color='green'>
+                    <i className="fa-solid fa-pen-to-square"></i> Editar.
+                  </Button> <br />
+                  <Button color='red'>
+                    <i className="fa-solid fa-trash"></i> Borrar.
+                  </Button>
+                </Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
